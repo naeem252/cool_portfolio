@@ -67,39 +67,73 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-}
+    transition: 0.4s ease-out;
+    position: relative;
 
+}
+.social_item::after{
+    content: '';
+    display: block;
+    position: absolute;
+    background-color: #eeeeee;
+    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+    transition: 0.7s;
+    z-index: -1;
+    cursor: pointer;
+}
+.social_item:hover::after{
+
+    -webkit-transform: scale(1.5);
+    -moz-transform: scale(1.5);
+    -ms-transform: scale(1.5);
+    -o-transform: scale(1.5);
+    transform: scale(1.5);
+    opacity: 0;
+
+}
 .social_item:not(:last-child) {
     margin-right: 1rem;
 }
 
 .social_link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 4rem;
+    height: 4rem;
     font-size: 1.5rem;
     text-decoration: none;
     color: #ffffff;
 }
 
-.social_link:hover {
-    text-decoration: none;
-    color: #eeeeee;
-}
 
 .twitter {
     background-color: #8cc7ff;
 }
-
+.twitter:hover{
+    background-color: #00a6ff;
+}
 .fb {
     background-color: #913fff;
 }
-
-.goole {
-    background-color: #ff7b7b;
+.fb:hover{
+    background-color: #5c3bff;
 }
 
+.github {
+    background-color: rgba(40, 11, 0, 0.75);
+}
+.github:hover{
+    background-color: rgba(40, 11, 0, 0.71);
+}
 .linkin {
     background-color: #637dc0;
 }
-
+.linkin:hover{
+    background-color: #3754c0;
+}
 /*About Section*/
 
 .about{
@@ -179,7 +213,7 @@ body {
     display: inline-block;
 }
 .profile_image{
-
+    position: relative;
     width: 20rem;
     height: 20rem;
     overflow: hidden;
@@ -187,6 +221,31 @@ body {
     margin: 4rem auto;
     border: 5px solid #1B1E22;
     position: relative;
+    backface-visibility: hidden;
+}
+.over-lay{
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.8);
+    -webkit-transition: 0.4s ease-in;
+    -moz-transition: 0.4s ease-in;
+    -ms-transition: 0.4s ease-in;
+    -o-transition: 0.4s ease-in;
+    transition: 0.4s ease-in;
+    -webkit-clip-path: polygon(53% 45%, 54% 0, 53% 44%, 100% 47%, 53% 44%, 52% 100%, 53% 45%, 0 45%);
+    clip-path: polygon(53% 45%, 54% 0, 53% 44%, 100% 47%, 53% 44%, 52% 100%, 53% 45%, 0 45%);
+}
+.profile_image:hover .over-lay{
+    -webkit-clip-path: polygon(0 0, 54% 0, 100% 0, 100% 47%, 100% 100%, 52% 100%, 0 100%, 0 45%);
+    clip-path: polygon(0 0, 54% 0, 100% 0, 100% 47%, 100% 100%, 52% 100%, 0 100%, 0 45%);
+}
+.framework-heading{
+    text-align: center;
+    margin-bottom: 2rem;
 }
 .my_image{
     width: 100%;
@@ -194,7 +253,6 @@ body {
 }
 .my_image:hover{
     cursor: pointer;
-    filter:blur(5px);
 }
 .my_name{
     display: block;
@@ -223,6 +281,45 @@ body {
     line-height: 26px;
 
 }
+.hire_btn{
+    padding: 1rem 2rem;
+    border-radius: 100px;
+    border: 1px solid #ffffff;
+    background-color: transparent;
+    font-size: 3rem;
+    color: #ffffff;
+    text-decoration: none;
+    display: inline-block;
+    position: relative;
+    margin-bottom: 4rem;
+}
+.hire_btn::after{
+    content: '';
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 100px;
+    background-color: transparent;
+    top:0;
+    left: 0;
+    position: absolute;
+    z-index: -100000;
+    transition: 0.4s;
+}
+.hire_btn:hover{
+    text-decoration: none;
+}
+.hire_btn:hover::after{
+    -webkit-transform: scale(1.4);
+    -moz-transform: scale(1.4);
+    -ms-transform: scale(1.4);
+    -o-transform: scale(1.4);
+    transform: scale(1.4);
+    background-color: #ffffff;
+    opacity: 0;
+
+}
+
 .paragraph:not(:last-child){
     margin-bottom: 3.5rem;
 }
@@ -264,13 +361,10 @@ body {
     font-size: 2rem;
     margin: 2rem 0;
 }
-.service:last-child{
-    margin: 0 auto;
-    margin-top: 3rem;
-    margin-left: 40rem;
-}
+
 .service_content{
     text-align: center;
+    font-size: 14px;
 }
 .service_icon-icon{
     transition: 0.65s;
@@ -383,6 +477,13 @@ resume
 }
 .skill_name{
     font-size: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.fram_logo{
+    margin-right: 1.2rem;
+    display: inline-block;
 }
 .skill_level{
     text-align: center;
@@ -418,7 +519,50 @@ resume
     border-top: 5px solid #731224;
     border-bottom: 5px solid #731224;
 }
-
+.jquery.active{
+    animation: width1 2s forwards ease-out;
+}
+@keyframes width1{
+    0%{
+        width:0%;
+    }
+    100%{
+        width:80%;
+    }
+}
+.react.active{
+    animation: width2 2s forwards ease-out;
+}
+@keyframes width2{
+    0%{
+        width:0%;
+    }
+    100%{
+        width:50%;
+    }
+}
+.wordpress.active{
+    animation: width3 2s forwards ease-out;
+}
+@keyframes width3{
+    0%{
+        width:0%;
+    }
+    100%{
+        width:60%;
+    }
+}
+.boot.active{
+    animation: width4 2s forwards ease-out;
+}
+@keyframes width4{
+    0%{
+        width:0%;
+    }
+    100%{
+        width:80%;
+    }
+}
 .photoshop,.after_effects,.flash,.illustrator{
     display: flex;
     margin-left: 20rem;
@@ -442,9 +586,20 @@ resume
     top:0;
     left: 0;
     height: 100%;
+   transition: 5s;
     background-color: #D63D3F;
-    width: 80%;
     border-radius: 10rem;
+}
+.inside.increase{
+    animation: 5s increase forwards;
+}
+@keyframes increase {
+    0%{
+        width:0;
+    }
+    100%{
+        width: 100%;
+    }
 }
 .persentage{
     padding: .5rem 1rem;
@@ -507,8 +662,9 @@ Portfolio
 }
 .portfolio_media{
     width: 100%;
-    height: 20rem;
+    height: 16rem;
     position: relative;
+    overflow: hidden;
 }
 .portfolio_media-image{
     width:100%;
@@ -533,6 +689,13 @@ Portfolio
     position: absolute;
     top: 0%;
     left: 0%;
+    font-size: 2rem;
+    flex-direction: column;
+}
+.portfolio_image-name div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     font-size: 2rem;
     flex-direction: column;
 }
